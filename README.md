@@ -131,3 +131,34 @@ in-memory fakes):
 - **Web integration**: Servlets handle HTTP request/response and session-based auth; JSP + JSTL
   render views; no business logic lives in the JSP layer.
 - **GUI**: a Swing desktop client reusing the exact same service/DAO layer as the web app.
+- Application Workflow
+
+The Movie Matrix application follows a simple workflow:
+
+1. User Registration/Login: Users create an account or log in to access the platform.
+2. Movie Exploration: Users browse the movie catalog and search or filter movies by title and genre.
+3. Movie Interaction: Users watch movies and submit ratings and reviews.
+4. Preference Tracking: The system uses viewing history, genres, and user ratings to understand individual preferences.
+5. Personalized Recommendations: The hybrid recommendation engine analyzes user preferences and movie ratings to suggest relevant movies.
+
+How the Recommendation Engine Works
+
+Movie Matrix uses a custom hybrid recommendation strategy instead of relying on an external AI API.
+
+The recommendation engine combines:
+
+- Genre-based recommendations: Identifies genres that match the user's interests.
+- Rating-based recommendations: Considers movie ratings to help identify highly rated films.
+- Hybrid approach: Combines genre preference weighting and movie ratings to generate personalized recommendations.
+
+This approach provides recommendations based on user activity and preferences.
+
+Future Enhancements
+
+Possible improvements for future versions include:
+
+- Adding movie posters and trailers.
+- Improving recommendation accuracy using more user interaction data.
+- Adding advanced movie filters and sorting options.
+- Enhancing the user interface and overall experience.
+- Introducing additional recommendation techniques.
