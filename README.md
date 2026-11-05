@@ -24,6 +24,8 @@ based on user interests, preferences, and viewing history.
 - Build: Maven
 - Tests: JUnit 5
 
+Note- Apache Tomcat is an open-source web server that runs Java-based web applications. It takes compiled Java Servlets(A Java program that runs on a web server (like Tomcat)) and JSPs(codes made up of HTML and Java languages), hosts them, and shows them as a live website that users can open in a browser. Apache Maven is a manager which allows us to search for and download libraries, files, etc., in an easier way. 
+
 ## Project Structure
 
 ```
