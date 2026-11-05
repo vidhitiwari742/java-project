@@ -164,3 +164,15 @@ Possible improvements for future versions include:
 - Adding advanced movie filters and sorting options.
 - Enhancing the user interface and overall experience.
 - Introducing additional recommendation techniques.
+
+- ## Challenges & Solutions
+
+| Challenge | Solution |
+|---|---|
+| Generating personalized recommendations | Implemented a hybrid recommendation strategy |
+| Managing database operations | Used DAO interfaces and JDBC implementations |
+| Protecting user passwords | Implemented password hashing |
+| Maintaining code organization | Followed layered architecture |
+| Supporting multiple interfaces | Reused the same service and DAO layers |
+
+
