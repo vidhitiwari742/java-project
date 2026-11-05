@@ -1,0 +1,114 @@
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    background: #0f1117;
+    color: #e8e8e8;
+}
+
+header {
+    background: #161923;
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #262b3a;
+}
+
+header .brand {
+    font-size: 22px;
+    font-weight: 700;
+    color: #e50914;
+    text-decoration: none;
+}
+
+nav a {
+    color: #ccc;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+nav a:hover { color: #e50914; }
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 32px;
+}
+
+.card {
+    background: #1a1d29;
+    border: 1px solid #262b3a;
+    border-radius: 8px;
+    padding: 24px;
+    max-width: 420px;
+    margin: 40px auto;
+}
+
+input, select, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 4px;
+    border: 1px solid #333;
+    background: #0f1117;
+    color: #eee;
+    font-size: 14px;
+}
+
+button {
+    background: #e50914;
+    border: none;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover { background: #c40812; }
+
+.error {
+    background: #3a1418;
+    color: #ff8a8a;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.movie-card {
+    background: #1a1d29;
+    border: 1px solid #262b3a;
+    border-radius: 8px;
+    padding: 16px;
+    transition: transform 0.15s;
+}
+
+.movie-card:hover { transform: translateY(-4px); border-color: #e50914; }
+
+.movie-card a { color: #fff; text-decoration: none; font-weight: 600; font-size: 16px; }
+
+.badge {
+    display: inline-block;
+    background: #262b3a;
+    color: #aab;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    margin-top: 6px;
+}
+
+.rating { color: #ffcc00; font-weight: 700; }
+
+.search-bar { display: flex; gap: 10px; margin-top: 10px; }
+.search-bar input { flex: 1; }
+.search-bar button { width: auto; padding: 10px 24px; }
+
+.review { border-top: 1px solid #262b3a; padding: 10px 0; }

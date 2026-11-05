@@ -1,0 +1,133 @@
+# Movie Matrix
+
+Movie Matrix is an AI-powered movie recommendation platform that suggests personalized films
+based on user interests, preferences, and viewing history.
+
+## Features
+
+- **AI-style Recommendations** — a custom hybrid recommendation engine (genre-preference weighting
+  blended with movie rating) built from each user's watch history and reviews. No external API key
+  required; see `service/HybridRecommendationStrategy`.
+- **Movie Catalog** — search and filter movies by title/genre.
+- **User Preference Tracking** — preferences are derived dynamically from watched movies and ratings.
+- **Two front ends**:
+  - A web app built with **Servlets + JSP** (JSTL, session-based auth).
+  - A desktop **Swing GUI** client that talks to the same service/DAO layer directly over JDBC.
+- **Reviews & ratings** — users can rate and review movies; a movie's average rating updates automatically.
+
+## Tech Stack
+
+- Language: Java 17
+- Database: MySQL 8 (JDBC via `mysql-connector-j`)
+- Web: Jakarta Servlets 6 / JSP / JSTL (tested against Apache Tomcat 10.1+)
+- Desktop GUI: Swing
+- Build: Maven
+- Tests: JUnit 5
+
+## Project Structure
+
+```
+java-project/
+├── database/schema.sql                # DB schema + sample data
+├── pom.xml
+├── src/main/java/com/moviematrix/
+│   ├── model/      # Person, User, Admin, Movie, Review, WatchHistoryEntry, Genre (OOP domain model)
+│   ├── dao/        # JDBC data-access layer (DBConnection + *DAO / *DAOImpl)
+│   ├── service/     # Business logic: UserService, MovieService, RecommendationEngine + strategies
+│   ├── servlet/     # Web integration layer (Login/Register/MovieList/MovieDetails/Recommendation)
+│   └── gui/         # MovieMatrixSwingApp — standalone desktop client
+├── src/main/resources/db.properties    # DB connection config
+├── src/main/webapp/                    # JSP pages + CSS
+└── src/test/java/com/moviematrix/      # JUnit test cases
+```
+
+## Prerequisites
+
+- JDK 17 or later
+- Maven 3.8+
+- MySQL Server & MySQL Workbench (or any MySQL client)
+- Apache Tomcat 10.1+ (for the web app — needs a Jakarta EE 10 compatible container)
+- IDE (Eclipse, IntelliJ IDEA, or NetBeans) — optional
+
+## Setup & Installation
+
+### 1. Clone the repository
+
+```
+git clone https://github.com/vidhitiwari742/java-project.git
+cd java-project
+```
+
+### 2. Create the database
+
+```
+mysql -u root -p < database/schema.sql
+```
+
+This creates the `movie_matrix` database with `users`, `movies`, `reviews`, `watch_history`, and
+`user_preferences` tables, plus sample movies and a demo account.
+
+**Demo login:** `demo@moviematrix.com` / `Password123`
+
+### 3. Configure DB credentials
+
+Edit `src/main/resources/db.properties` if your MySQL user/password differ from the defaults:
+
+```properties
+db.url=jdbc:mysql://localhost:3306/movie_matrix?useSSL=false&serverTimezone=UTC
+db.user=root
+db.password=root
+```
+
+### 4. Build the project
+
+```
+mvn clean package
+```
+
+This compiles the code, runs the JUnit test suite, and produces `target/movie-matrix.war`.
+
+### 5. Run the web app
+
+Deploy `target/movie-matrix.war` to Tomcat (e.g. copy it into Tomcat's `webapps/` folder), then
+start Tomcat and open:
+
+```
+http://localhost:8080/movie-matrix/
+```
+
+### 6. Run the desktop (Swing) app
+
+```
+mvn compile exec:java -Dexec.mainClass="com.moviematrix.gui.MovieMatrixSwingApp"
+```
+
+(or run `com.moviematrix.gui.MovieMatrixSwingApp.main()` directly from your IDE). It connects to
+the same MySQL database using the same `db.properties`.
+
+## Running Tests
+
+```
+mvn test
+```
+
+Test cases cover (no live database required — DAOs are abstracted behind interfaces so tests use
+in-memory fakes):
+
+- `PasswordUtilTest` — password hashing correctness
+- `MovieTest` — `Movie` natural ordering (`Comparable`) and equality, `Genre` parsing
+- `RecommendationStrategyTest` — genre-based, rating-based and hybrid recommendation algorithms
+- `UserServiceTest` — registration validation, duplicate-email rejection, authentication
+
+## Core Java Concepts Demonstrated
+
+- **OOP**: abstraction (`Person` abstract class), inheritance (`User`/`Admin` extend `Person`),
+  polymorphism (`RecommendationStrategy` implementations, `getRole()` overrides), encapsulation
+  (private fields + getters/setters across all model classes).
+- **Interfaces & Strategy pattern**: `RecommendationStrategy`, `MovieDAO`, `UserDAO`, `ReviewDAO`,
+  `WatchHistoryDAO` separate contracts from JDBC implementations.
+- **JDBC**: `DBConnection` + `*DAOImpl` classes use `PreparedStatement` for all queries (SQL
+  injection-safe), with proper `try-with-resources` connection handling.
+- **Web integration**: Servlets handle HTTP request/response and session-based auth; JSP + JSTL
+  render views; no business logic lives in the JSP layer.
+- **GUI**: a Swing desktop client reusing the exact same service/DAO layer as the web app.
