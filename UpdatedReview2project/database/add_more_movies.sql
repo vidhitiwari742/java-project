@@ -1,0 +1,25 @@
+USE movie_matrix;
+
+INSERT INTO movies (title, genre, release_year, director, rating, description, poster_url) VALUES
+('Spirited Away', 'Animation', 2001, 'Hayao Miyazaki', 8.6, 'A young girl enters a spirit world and must work at a bathhouse to free her parents.', ''),
+('Arrival', 'Sci-Fi', 2016, 'Denis Villeneuve', 7.9, 'A linguist works with the military to communicate with alien lifeforms.', ''),
+('Mad Max: Fury Road', 'Action', 2015, 'George Miller', 8.1, 'In a post-apocalyptic wasteland, two rebels flee across the desert in a war rig.', ''),
+('Before Sunrise', 'Romance', 1995, 'Richard Linklater', 8.1, 'Two strangers meet on a train in Vienna and spend one unforgettable night together.', ''),
+('Whiplash', 'Drama', 2014, 'Damien Chazelle', 8.5, 'An ambitious young drummer enrolls in a cutthroat music conservatory.', ''),
+('Knives Out', 'Thriller', 2019, 'Rian Johnson', 7.9, 'A sharp detective investigates the mysterious death of a wealthy crime novelist.', ''),
+('A Quiet Place', 'Horror', 2018, 'John Krasinski', 7.5, 'A family lives in silence to hide from creatures that hunt by sound.', ''),
+('The Grand Budapest Hotel', 'Comedy', 2014, 'Wes Anderson', 8.1, 'The adventures of a legendary concierge and his lobby boy in an iconic hotel.', ''),
+('Planet Earth II', 'Documentary', 2016, 'David Attenborough', 9.5, 'Wildlife documentary exploring how animals meet the challenges of surviving in iconic habitats.', ''),
+('Pan''s Labyrinth', 'Fantasy', 2006, 'Guillermo del Toro', 8.2, 'In 1944 Spain, a young stepdaughter of a sadistic army officer escapes into an eerie fantasy world.', ''),
+('3 Idiots', 'Comedy', 2009, 'Rajkumar Hirani', 8.4, 'Two friends embark on a quest for a lost buddy while revisiting their college days and questioning rigid education norms.', ''),
+('Taare Zameen Par', 'Drama', 2007, 'Aamir Khan', 8.3, 'An unconventional art teacher helps a misunderstood young boy with dyslexia discover his true potential.', ''),
+('Tumbbad', 'Horror', 2018, 'Rahi Anil Barve', 8.2, 'A mythological tale of greed and a hidden ancestral treasure guarded by a fallen deity in rural Maharashtra.', ''),
+('Andhadhun', 'Thriller', 2018, 'Sriram Raghavan', 8.2, 'A series of mysterious events changes the life of a blind pianist who unwittingly witnesses a murder.', ''),
+('Drishyam', 'Thriller', 2013, 'Jeethu Joseph', 8.3, 'A resourceful cable operator goes to extraordinary lengths to protect his family after an accidental crime.', ''),
+('Bahubali: The Beginning', 'Fantasy', 2015, 'S. S. Rajamouli', 8.0, 'In ancient India, an adventurous young man learns about his royal heritage and destiny in the kingdom of Mahishmati.', ''),
+('RRR', 'Action', 2022, 'S. S. Rajamouli', 7.8, 'A fearless revolutionary and an officer in the British force forge a deep bond before standing on opposite sides of history.', ''),
+('Swades', 'Drama', 2004, 'Ashutosh Gowariker', 8.2, 'A successful NASA scientist returns to his roots in rural India and ends up transforming a village.', ''),
+('Kantara', 'Action', 2022, 'Rishab Shetty', 8.2, 'Conflict erupts between villagers and forest authorities in coastal Karnataka, awakening ancestral traditions and folklore.', ''),
+('Kalki 2898 AD', 'Sci-Fi', 2024, 'Nag Ashwin', 7.1, 'In a dystopian future city, bounty hunters and rebels collide around a prophecy tied to ancient Indian epics.', ''),
+('Zindagi Na Milegi Dobara', 'Drama', 2011, 'Zoya Akhtar', 8.2, 'Three childhood friends take a bachelor road trip across Spain that forces each of them to confront their deepest fears.', ''),
+('96', 'Romance', 2018, 'C. Prem Kumar', 8.5, 'Two high school sweethearts reunite after twenty-two years at a school reunion and reminisce over one night.', '');
