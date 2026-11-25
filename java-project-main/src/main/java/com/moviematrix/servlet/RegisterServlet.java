@@ -1,0 +1,43 @@
+package com.moviematrix.servlet;
+
+import com.moviematrix.model.User;
+import com.moviematrix.service.UserService;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+import java.sql.SQLException;
+
+@WebServlet("/register")
+public class RegisterServlet extends HttpServlet {
+
+    private final UserService userService = new UserService();
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/register.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name");
+        String email = req.getParameter("email");
+        String password = req.getParameter("password");
+
+        try {
+            User user = userService.register(name, email, password);
+            req.getSession().setAttribute("user", user);
+            resp.sendRedirect(req.getContextPath() + "/movies");
+        } catch (IllegalArgumentException e) {
+            req.setAttribute("error", e.getMessage());
+            req.getRequestDispatcher("/register.jsp").forward(req, resp);
+        } catch (SQLException e) {
+            req.setAttribute("error", "Database error: " + e.getMessage());
+            req.getRequestDispatcher("/register.jsp").forward(req, resp);
+        }
+    }
+}
